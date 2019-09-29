@@ -1,0 +1,50 @@
+PODS:
+  - Alamofire (4.9.0)
+  - Kingfisher (5.8.1):
+    - Kingfisher/Core (= 5.8.1)
+  - Kingfisher/Core (5.8.1)
+  - Moya/Core (13.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
+  - Moya/RxSwift (13.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - Result (4.1.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
+  - SnapKit (5.0.1)
+  - Toaster (2.2.0)
+
+DEPENDENCIES:
+  - Kingfisher (~> 5.0)
+  - Moya/RxSwift
+  - RxCocoa
+  - RxSwift
+  - SnapKit (~> 5.0.0)
+  - Toaster
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Kingfisher
+    - Moya
+    - Result
+    - RxCocoa
+    - RxSwift
+    - SnapKit
+    - Toaster
+
+SPEC CHECKSUMS:
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  Kingfisher: de969e451c81ca6c07a454bc36fea84b8b08c3c7
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Toaster: c1a81b376edcc2470157b4d1ee1e9341d3b96455
+
+PODFILE CHECKSUM: 215263a80742bddc6bd970dc0eea83ef74ca095f
+
+COCOAPODS: 1.8.0
