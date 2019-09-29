@@ -10,6 +10,7 @@ target 'MovieFinder' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Moya/RxSwift'
+  pod 'RxDataSources'
 	
   # Image + Animation + UI
   pod 'Kingfisher', '~> 5.0'
