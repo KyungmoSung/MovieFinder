@@ -15,7 +15,7 @@ enum TmdbAPI {
     case getSimilarMovies(_ movieId: Int)
     case getVideos(_ movieId: Int)
     
-    case getPopular
+    case getPopular(page: Int)
     case getTopRated
     case getNowPlaying
     case getUpcoming
@@ -44,7 +44,7 @@ extension TmdbAPI: TargetType {
             return "/movie/\(movieId)/similar"
         case .getVideos(let movieId):
             return "/movie/\(movieId)/videos"
-        case .getPopular:
+        case .getPopular(_):
             return "/movie/popular"
         case .getTopRated:
             return "/movie/top_rated"
@@ -67,11 +67,11 @@ extension TmdbAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .getPopular:
+        case .getPopular(let page):
             let param: [String: Any] = [
                 "api_key": AppKey.tmdbApi,
                 "language": "ko",
-                "page": 1
+                "page": page
             ]
             return .requestParameters(parameters: param, encoding: URLEncoding.default)
         default:

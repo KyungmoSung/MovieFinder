@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="MovieFinder" customModuleProvider="target">
             <connections>
                 <outlet property="popularCollectionView" destination="Daz-47-kg1" id="k7v-Fd-YVW"/>
+                <outlet property="reloadBtn" destination="cKL-pP-6es" id="5fx-hL-cnM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,12 +32,18 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKL-pP-6es">
+                    <rect key="frame" x="160" y="766" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cKL-pP-6es" secondAttribute="bottom" constant="66" id="8Ve-EM-6iE"/>
                 <constraint firstItem="Daz-47-kg1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ANf-Tw-kGF"/>
                 <constraint firstItem="Daz-47-kg1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ZYZ-J4-EzH"/>
                 <constraint firstItem="Daz-47-kg1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="eUj-lW-OvI"/>
+                <constraint firstItem="cKL-pP-6es" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="160" id="waZ-RS-5LD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="93.75"/>

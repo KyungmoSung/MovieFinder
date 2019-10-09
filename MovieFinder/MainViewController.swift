@@ -13,8 +13,10 @@ import Kingfisher
 class MainViewController: UIViewController {
 
     @IBOutlet var popularCollectionView: UICollectionView!
+    @IBOutlet var reloadBtn: UIButton!
     var network = MFNetworkManager()
     var disposeBag = DisposeBag()
+    var popularPage = 1;
 
     let popularSubject = BehaviorSubject<[Movie]>(value: [])
     
@@ -31,13 +33,7 @@ class MainViewController: UIViewController {
         popularCollectionView.setCollectionViewLayout(flowLayout, animated: true)
         popularCollectionView.register(UINib(nibName: PopularCell.cellID, bundle: nil), forCellWithReuseIdentifier: PopularCell.cellID)
         
-        network.getPopular()
-            .subscribe( onSuccess: { movies in
-                self.popularSubject.onNext(movies)
-            }, onError: { err in
-                print(err.localizedDescription)
-            })
-            .disposed(by: disposeBag)
+        getPopular()
         
         popularSubject
             .bind(to: popularCollectionView.rx.items(cellIdentifier: PopularCell.cellID, cellType: PopularCell.self)){index,item,cell in
@@ -46,6 +42,23 @@ class MainViewController: UIViewController {
                     cell.posterIv.kf.setImage(with: posterUrl)
                 }
         }
+        .disposed(by: disposeBag)
+        
+        reloadBtn.rx.tap
+            .bind(onNext: {
+                self.getPopular()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func getPopular() {
+        network.getPopular(page: popularPage)
+        .subscribe( onSuccess: { movies in
+            self.popularPage += 1
+            self.popularSubject.onNext(movies)
+        }, onError: { err in
+            print(err.localizedDescription)
+        })
         .disposed(by: disposeBag)
     }
 }

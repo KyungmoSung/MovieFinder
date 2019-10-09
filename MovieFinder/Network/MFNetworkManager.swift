@@ -12,9 +12,9 @@ import Moya
 class MFNetworkManager {
     let provider = MoyaProvider<TmdbAPI>()
     
-    func getPopular() -> Single<[Movie]> {
+    func getPopular(page: Int) -> Single<[Movie]> {
         return provider.rx
-            .request(.getPopular)
+            .request(.getPopular(page: page))
             .filterSuccessfulStatusCodes()
             .map{ try JSONDecoder().decode(Movie.self, from: $0.data) }
             .map{ $0.results! }
