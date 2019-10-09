@@ -66,7 +66,17 @@ extension TmdbAPI: TargetType {
     }
     
     var task: Task {
-        return .requestPlain
+        switch self {
+        case .getPopular:
+            let param: [String: Any] = [
+                "api_key": AppKey.tmdbApi,
+                "language": "ko",
+                "page": 1
+            ]
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        default:
+            return .requestPlain
+        }
     }
     
     var validationType: ValidationType {

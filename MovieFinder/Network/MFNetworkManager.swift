@@ -16,8 +16,7 @@ class MFNetworkManager {
         return provider.rx
             .request(.getPopular)
             .filterSuccessfulStatusCodes()
-            .map { res in
-                try JSONDecoder().decode([Movie].self, from: res.data)
-        }
+            .map{ try JSONDecoder().decode(Movie.self, from: $0.data) }
+            .map{ $0.results! }
     }
 }
