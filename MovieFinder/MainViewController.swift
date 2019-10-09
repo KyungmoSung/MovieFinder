@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     var disposeBag = DisposeBag()
     var popularPage = 1;
 
-    let popularSubject = BehaviorSubject<[Movie]>(value: [])
+    let popularRelay = BehaviorRelay<[Movie]>(value: [])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
         
         getPopular()
         
-        popularSubject
+        popularRelay
             .bind(to: popularCollectionView.rx.items(cellIdentifier: PopularCell.cellID, cellType: PopularCell.self)){index,item,cell in
                 cell.titleLb.text = item.title
                 if let posterPath = item.posterPath, let posterUrl = URL(string: AppURL.Tmdb.image + posterPath) {
@@ -55,7 +55,7 @@ class MainViewController: UIViewController {
         network.getPopular(page: popularPage)
         .subscribe( onSuccess: { movies in
             self.popularPage += 1
-            self.popularSubject.onNext(movies)
+            self.popularRelay.accept(movies)
         }, onError: { err in
             print(err.localizedDescription)
         })
